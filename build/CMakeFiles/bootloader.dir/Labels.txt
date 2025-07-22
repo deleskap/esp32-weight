@@ -1,0 +1,13 @@
+# Target labels
+ bootloader
+# Source files and their labels
+C:/dev/esp/NimBLE_GATT_Server/build/CMakeFiles/bootloader
+C:/dev/esp/NimBLE_GATT_Server/build/CMakeFiles/bootloader.rule
+C:/dev/esp/NimBLE_GATT_Server/build/CMakeFiles/bootloader-complete.rule
+C:/dev/esp/NimBLE_GATT_Server/build/bootloader-prefix/src/bootloader-stamp/bootloader-build.rule
+C:/dev/esp/NimBLE_GATT_Server/build/bootloader-prefix/src/bootloader-stamp/bootloader-configure.rule
+C:/dev/esp/NimBLE_GATT_Server/build/bootloader-prefix/src/bootloader-stamp/bootloader-download.rule
+C:/dev/esp/NimBLE_GATT_Server/build/bootloader-prefix/src/bootloader-stamp/bootloader-install.rule
+C:/dev/esp/NimBLE_GATT_Server/build/bootloader-prefix/src/bootloader-stamp/bootloader-mkdir.rule
+C:/dev/esp/NimBLE_GATT_Server/build/bootloader-prefix/src/bootloader-stamp/bootloader-patch.rule
+C:/dev/esp/NimBLE_GATT_Server/build/bootloader-prefix/src/bootloader-stamp/bootloader-update.rule
