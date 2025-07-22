@@ -1,0 +1,16 @@
+# ESP-IDF build output
+build/
+sdkconfig
+sdkconfig.old
+
+# VS Code settings
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# CMake cache
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
