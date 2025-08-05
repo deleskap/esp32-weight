@@ -1,8 +1,8 @@
 {
   "C_Cpp.intelliSenseEngine": "default",
-  "idf.espIdfPathWin": "C:\\Users\\PD\\esp\\v5.5-rc1\\esp-idf",
-  "idf.toolsPathWin": "C:\\Users\\PD\\.espressif",
-  "idf.pythonInstallPath": "C:\\Users\\PD\\.espressif\\tools\\idf-python\\3.11.2\\python.exe",
+  "idf.espIdfPathWin": "C:\\Users\\ASUS-B8430U\\esp\\v5.4.2\\esp-idf",
+  "idf.toolsPathWin": "C:\\Users\\ASUS-B8430U\\.espressif",
+  "idf.pythonInstallPath": "C:\\Users\\ASUS-B8430U\\.espressif\\tools\\idf-python\\3.11.2\\python.exe",
   "idf.flashType": "UART",
-  "idf.portWin": "COM3"
+  "idf.portWin": "COM9"
 }

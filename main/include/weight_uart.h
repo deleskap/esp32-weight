@@ -3,6 +3,7 @@
 
 #include "common.h"
 #include "driver/uart.h"
+#include "driver/gpio.h"
 
 #ifdef __cplusplus
 extern "C" {

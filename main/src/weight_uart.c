@@ -4,8 +4,8 @@
 #define WEIGHT_UART_PORT UART_NUM_1
 #define WEIGHT_UART_TX_PIN GPIO_NUM_17
 #define WEIGHT_UART_RX_PIN GPIO_NUM_16
-#define WEIGHT_UART_BAUDRATE 9600
-#define WEIGHT_BUF_SIZE 128
+#define WEIGHT_UART_BAUDRATE 2400
+#define WEIGHT_BUF_SIZE 256 //must be > 128
 
 esp_err_t weight_uart_init(void) {
     const uart_config_t uart_config = {

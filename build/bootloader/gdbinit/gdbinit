@@ -1,2 +1,2 @@
-source C:/dev/esp/NimBLE_GATT_Server/build/bootloader/gdbinit/symbols
-source C:/dev/esp/NimBLE_GATT_Server/build/bootloader/gdbinit/connect
+source C:/Users/ASUS-B8430U/Documents/esp32-weight/build/bootloader/gdbinit/symbols
+source C:/Users/ASUS-B8430U/Documents/esp32-weight/build/bootloader/gdbinit/connect
