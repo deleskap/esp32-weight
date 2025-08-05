@@ -6,6 +6,7 @@
 
 #include "gatt_svc.h"
 #include "common.h"
+#include "weight_uart.h"
 
 /* Private function declarations */
 static int weight_chr_access(uint16_t conn_handle, uint16_t attr_handle,
@@ -28,9 +29,7 @@ static uint16_t weight_chr_conn_handle = 0;
 static bool weight_chr_conn_handle_inited = false;
 static bool weight_ind_status = false;
 
-/* Wewnętrzna logika zmiany wagi */
-static float weight_value = 1.0f;   // Aktualna waga (1–10 kg)
-static int weight_direction = 1;    // 1 = w górę, -1 = w dół
+static float weight_value = 0.0f;
 
 /* GATT services table */
 static const struct ble_gatt_svc_def gatt_svr_svcs[] = {
@@ -51,27 +50,24 @@ static const struct ble_gatt_svc_def gatt_svr_svcs[] = {
     {0},
 };
 
-/* Aktualizacja wagi co 0.5 kg w zakresie 1–10 kg */
+/* Aktualizacja wagi na podstawie danych z UART */
 static void update_weight(void) {
-    weight_value += 0.5f * weight_direction;
+    float new_weight;
 
-    if (weight_value >= 10.0f) {
-        weight_value = 10.0f;
-        weight_direction = -1;
-    } else if (weight_value <= 1.0f) {
-        weight_value = 1.0f;
-        weight_direction = 1;
+    if (weight_uart_read(&new_weight)) {
+        weight_value = new_weight;
+
+        uint16_t weight_ble = (uint16_t)(weight_value / 0.005f);
+
+        weight_chr_val[0] = 0x01; // Flags: 0x01 -> wartość w kilogramach
+        weight_chr_val[1] = weight_ble & 0xFF;
+        weight_chr_val[2] = (weight_ble >> 8) & 0xFF;
+
+        ESP_LOGI(TAG,
+                 "Weight updated: %.2f kg (BLE Encoded: %02X %02X %02X)",
+                 weight_value, weight_chr_val[0], weight_chr_val[1],
+                 weight_chr_val[2]);
     }
-
-    // Konwersja na jednostki 0.005 kg (np. 70.0 kg -> 70 / 0.005 = 14000)
-    uint16_t weight_ble = (uint16_t)(weight_value / 0.005f);
-
-    weight_chr_val[0] = 0x01; // Flags: 0x01 -> wartość w kilogramach
-    weight_chr_val[1] = weight_ble & 0xFF;
-    weight_chr_val[2] = (weight_ble >> 8) & 0xFF;
-
-    ESP_LOGI(TAG, "Weight updated: %.1f kg (BLE Encoded: %02X %02X %02X)",
-             weight_value, weight_chr_val[0], weight_chr_val[1], weight_chr_val[2]);
 }
 
 /* Characteristic access callback */

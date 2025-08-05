@@ -7,6 +7,7 @@
 #include "common.h"
 #include "gap.h"
 #include "gatt_svc.h"
+#include "weight_uart.h"
 
 /* Library function declarations */
 void ble_store_config_init(void);
@@ -88,6 +89,13 @@ void app_main(void) {
     rc = gatt_svc_init();
     if (rc != 0) {
         ESP_LOGE(TAG, "failed to initialize GATT server, error: %d", rc);
+        return;
+    }
+
+    // Initialize UART for weight scale
+    ret = weight_uart_init();
+    if (ret != ESP_OK) {
+        ESP_LOGE(TAG, "failed to initialize weight UART, error: %d", ret);
         return;
     }
 
